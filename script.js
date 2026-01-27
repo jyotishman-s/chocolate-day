@@ -1,3 +1,20 @@
+const greeting = document.getElementById("greeting");
+const subtext = document.getElementById("subtext");
+
+const name = "Chittu";
+const hour = new Date().getHours();
+
+greeting.textContent = `Hey ${name} 😊`;
+
+if (hour < 12) {
+  subtext.textContent = "Hope this makes your morning sweeter 🍫";
+} else if (hour < 18) {
+  subtext.textContent = "A little sweetness for your day 🍫";
+} else {
+  subtext.textContent = "Ending the day with something sweet 🍫";
+}
+
+
 window.onload = () => {
   const teddy = document.querySelector(".teddy");
   const chocolate = document.querySelector(".chocolate");
@@ -6,9 +23,22 @@ window.onload = () => {
   const loader = document.querySelector(".loader");
 
   // Teddy drops
+   setTimeout(() => {
+  teddy.classList.add("show");
+
+  // Teddy blinks once after landing
   setTimeout(() => {
-    teddy.classList.add("show");
-  }, 500);
+    teddy.classList.add("blink");
+
+    // Remove blink class so it doesn’t repeat
+    setTimeout(() => {
+      teddy.classList.remove("blink");
+    }, 200);
+
+  }, 2000);
+
+}, 500);
+
 
   // Button appears after teddy
   setTimeout(() => {
@@ -27,4 +57,7 @@ window.onload = () => {
     }, 2500);
   });
 };
+
+
+
 
