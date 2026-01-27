@@ -1,4 +1,4 @@
-/* Page base */
+* Page base */
 body {
   margin: 0;
   padding: 0;
@@ -133,6 +133,22 @@ p {
 .final-message.show {
   opacity: 1;
   visibility: visible;
+}
+/* Teddy blink effect */
+.teddy.blink {
+  animation: blink 0.18s ease-in-out;
+}
+
+@keyframes blink {
+  0% {
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateY(0) scaleY(0.88);
+  }
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
 }
 
 
