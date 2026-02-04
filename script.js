@@ -1,84 +1,80 @@
-const greeting = document.getElementById("greeting");
-const subtext = document.getElementById("subtext");
-
-const name = "Chittu";
-const hour = new Date().getHours();
-
-greeting.textContent = `Hey ${name} 😊`;
-
-if (hour < 12) {
-  subtext.textContent = "Hope this makes your morning sweeter 🍫";
-} else if (hour < 18) {
-  subtext.textContent = "A little sweetness for your day 🍫";
-} else {
-  subtext.textContent = "Ending the day with something sweet 🍫";
-}
-
-
 window.onload = () => {
+  /* ---------- ELEMENTS ---------- */
+  const greeting = document.getElementById("greeting");
+  const subtext = document.getElementById("subtext");
+
   const teddy = document.querySelector(".teddy");
-  const chocolate = document.querySelector(".chocolate");
-  const message = document.querySelector(".final-message");
   const button = document.querySelector(".gift-btn");
   const loader = document.querySelector(".loader");
+  const chocolate = document.querySelector(".chocolate");
+  const finalMessage = document.querySelector(".final-message");
+  const nightMessage = document.getElementById("night-message");
 
-  // Teddy drops
-   setTimeout(() => {
-  teddy.classList.add("show");
+  /* ---------- SAFETY CHECK ---------- */
+  if (!greeting || !subtext || !teddy || !button || !loader || !chocolate || !finalMessage) {
+    console.error("Some elements are missing in HTML");
+    return;
+  }
 
-  // Teddy blinks once after landing
+  /* ---------- PERSONALIZATION ---------- */
+  const name = "Chittu";
+  const hour = new Date().getHours();
+
+  greeting.innerText = `Hey ${name} 😊`;
+
+  if (hour < 12) {
+    subtext.innerText = "Hope this makes your morning sweeter 🍫";
+  } else if (hour < 18) {
+    subtext.innerText = "A little sweetness for your day 🍫";
+  } else {
+    subtext.innerText = "Ending the day with something sweet 🍫";
+  }
+
+  /* ---------- INITIAL STATES ---------- */
+  loader.style.display = "none";
+  chocolate.classList.remove("show");
+  finalMessage.classList.remove("show");
+
+  if (nightMessage) {
+    nightMessage.classList.remove("show");
+  }
+
+  /* ---------- TEDDY APPEAR ---------- */
   setTimeout(() => {
-    teddy.classList.add("blink");
+    teddy.classList.add("show");
 
-    // Remove blink class so it doesn’t repeat
+    // Teddy blink (once)
     setTimeout(() => {
-      teddy.classList.remove("blink");
-    }, 200);
+      teddy.classList.add("blink");
+      setTimeout(() => {
+        teddy.classList.remove("blink");
+      }, 200);
+    }, 2000);
+  }, 500);
 
-  }, 2000);
-
-}, 500);
-
-
-  // Button appears after teddy
+  /* ---------- BUTTON APPEAR ---------- */
   setTimeout(() => {
     button.classList.add("show");
   }, 2000);
 
-  // On button click
+  /* ---------- BUTTON CLICK ---------- */
   button.addEventListener("click", () => {
     button.style.display = "none";
-    loader.style.opacity = "1";
+    loader.style.display = "block";
 
     setTimeout(() => {
       loader.style.display = "none";
       chocolate.classList.add("show");
-      message.classList.add("show");
+      finalMessage.classList.add("show");
+
+      // Late night message logic (LOCAL TIME)
+      const currentHour = new Date().getHours();
+      if ((currentHour >= 23 || currentHour < 2) && nightMessage) {
+        setTimeout(() => {
+          nightMessage.classList.add("show");
+        }, 1000);
+      }
+
     }, 2500);
-  }
-      function isLateNight() {
-  const hour = new Date().getHours(); // local device time
-
-  // Between 11 PM (23) and 2 AM (2)
-  return (hour >= 23 || hour < 2);
-}
-
-if (isLateNight()) {
-  setTimeout(() => {
-    const nightMsg = document.getElementById("night-message");
-    if (nightMsg) {
-      nightMsg.classList.add("show");
-    }
-  }, 1000); // gentle delay
-}
-                    
-
-  );
+  });
 };
-
-
-
-
-
-
-
