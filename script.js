@@ -55,9 +55,27 @@ window.onload = () => {
       chocolate.classList.add("show");
       message.classList.add("show");
     }, 2500);
+  }
+      function isLateNight() {
+  const hour = new Date().getHours(); // local device time
+
+  // Between 11 PM (23) and 2 AM (2)
+  return (hour >= 23 || hour < 2);
+}
+
+if (isLateNight()) {
+  setTimeout(() => {
+    const nightMsg = document.getElementById("night-message");
+    if (nightMsg) {
+      nightMsg.classList.add("show");
+    }
+  }, 1000); // gentle delay
+}
+                    
 
   );
 };
+
 
 
 
