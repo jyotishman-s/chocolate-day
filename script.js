@@ -55,8 +55,21 @@ window.onload = () => {
       chocolate.classList.add("show");
       message.classList.add("show");
     }, 2500);
-  });
+    .night-message {
+  margin-top: 20px;
+  font-size: 15px;
+  opacity: 0;
+  transition: opacity 1s ease;
+  color: #5a3e36;
+}
+
+.night-message.show {
+  opacity: 1;
+}
+
+  );
 };
+
 
 
 
