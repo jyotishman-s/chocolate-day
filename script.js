@@ -67,14 +67,30 @@ window.onload = () => {
       chocolate.classList.add("show");
       finalMessage.classList.add("show");
 
-      // Late night message logic (LOCAL TIME)
-      const currentHour = new Date().getHours();
-      if ((currentHour >= 23 || currentHour < 2) && nightMessage) {
-        setTimeout(() => {
-          nightMessage.classList.add("show");
-        }, 1000);
+      // 🌙 Late night message (JS-created, local time)
+const currentHour = new Date().getHours();
+
+if (currentHour >= 23 || currentHour < 2) {
+  setTimeout(() => {
+    // Create element
+    const nightMsg = document.createElement("p");
+    nightMsg.className = "night-message";
+    nightMsg.innerHTML = "Hui jaa etiya 😴<br>Kaille school ase";
+
+    // Append AFTER final message
+    finalMessage.insertAdjacentElement("afterend", nightMsg);
+
+    // Fade in
+    setTimeout(() => {
+      nightMsg.classList.add("show");
+    }, 50);
+
+  }, 1500); // ⏳ after chocolate
+}
+
       }
 
     }, 2500);
   });
 };
+
