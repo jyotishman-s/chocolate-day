@@ -59,37 +59,38 @@ window.onload = () => {
 
   /* ---------- BUTTON CLICK ---------- */
   button.addEventListener("click", () => {
-    button.style.display = "none";
-    loader.style.display = "block";
+  button.style.display = "none";
+  loader.style.display = "block";
 
-    setTimeout(() => {
-      loader.style.display = "none";
-      chocolate.classList.add("show");
-      finalMessage.classList.add("show");
-
-      // 🌙 Late night message (JS-created, local time)
-const currentHour = new Date().getHours();
-
-if (currentHour >= 23 || currentHour < 2) {
   setTimeout(() => {
-    // Create element
-    const nightMsg = document.createElement("p");
-    nightMsg.className = "night-message";
-    nightMsg.innerHTML = "Hui jaa etiya 😴<br>Kaille school ase";
+    loader.style.display = "none";
 
-    // Append AFTER final message
-    finalMessage.insertAdjacentElement("afterend", nightMsg);
+    chocolate.classList.add("show");
+    finalMessage.classList.add("show");
 
-    // Fade in
-    setTimeout(() => {
-      nightMsg.classList.add("show");
-    }, 50);
+    // 🌙 Late night message (JS-created, LOCAL TIME)
+    const hour = new Date().getHours();
 
-  }, 1500); // ⏳ after chocolate
-}
+    if (hour >= 23 || hour < 2) {
+      setTimeout(() => {
+        const nightMsg = document.createElement("p");
+        nightMsg.className = "night-message";
+        nightMsg.innerHTML = "Hui jaa etiya 😴<br>Kaille school ase";
 
-    }, 2500);
-  });
+        finalMessage.insertAdjacentElement("afterend", nightMsg);
+
+        // Fade in
+        setTimeout(() => {
+          nightMsg.classList.add("show");
+        }, 50);
+
+      }, 1500); // ⏳ 1.5 sec after chocolate
+    }
+
+  }, 2500); // loader duration
+});
+
+
 
 
 
