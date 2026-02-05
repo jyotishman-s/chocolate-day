@@ -162,6 +162,7 @@ p {
     transform: translateY(0) scaleY(1);
   }
  .night-message {
+  display: none;           /* 🔑 hard hidden */
   margin-top: 20px;
   font-size: 15px;
   opacity: 0;
@@ -170,14 +171,17 @@ p {
 }
 
 .night-message.show {
+  display: block;
   opacity: 1;
 }
 
-}
-
-
-
 
 }
+
+
+
+
+}
+
 
 
