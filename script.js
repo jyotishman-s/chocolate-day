@@ -88,9 +88,8 @@ if (currentHour >= 23 || currentHour < 2) {
   }, 1500); // ⏳ after chocolate
 }
 
-      }
-
     }, 2500);
   });
-};
+
+
 
