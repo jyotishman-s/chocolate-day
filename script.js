@@ -89,3 +89,5 @@ window.onload = () => {
 
   }, 2500); // loader duration
 });
+}
+
