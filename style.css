@@ -175,10 +175,6 @@ p {
   opacity: 1;
 }
 
-.gift-btn {
-  pointer-events: auto !important;
-  position: relative;
-  z-index: 10;
 }
 
 
@@ -188,6 +184,7 @@ p {
 
 
 }
+
 
 
 
