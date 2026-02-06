@@ -46,15 +46,50 @@ setTimeout(() => {
 
   /* ========= BUTTON CLICK ========= */
   button.addEventListener("click", () => {
-    // Hide button
-    button.style.display = "none";
+  button.disabled = true;
+  button.style.display = "none";
 
-    // Show loader
-    loader.style.display = "block";
+  // SHOW loader
+  loader.style.display = "block";
+  loader.classList.add("show");
 
-    // Loader duration
+  // Wait → then show chocolate
+  setTimeout(() => {
+    loader.classList.remove("show");
+
     setTimeout(() => {
       loader.style.display = "none";
+
+      chocolate.style.display = "block";
+      chocolate.classList.add("show");
+
+      setTimeout(() => {
+        finalMessage.style.display = "block";
+        finalMessage.classList.add("show");
+
+        // 🌙 Night message (if late)
+        const h = new Date().getHours();
+        if (h >= 23 || h < 2) {
+          setTimeout(() => {
+            const nightMsg = document.createElement("p");
+            nightMsg.className = "night-message";
+            nightMsg.innerHTML = "Hui jaa etiya 😴<br>Kaille school ase";
+
+            finalMessage.insertAdjacentElement("afterend", nightMsg);
+
+            requestAnimationFrame(() => {
+              nightMsg.classList.add("show");
+            });
+          }, 1500);
+        }
+
+      }, 300);
+
+    }, 400);
+
+  }, 2200); // ⏳ loader visible for ~2.2s
+});
+
 
       // Show chocolate + final message
       chocolate.classList.add("show");
@@ -82,4 +117,5 @@ setTimeout(() => {
     }, 2500); // loader time
   });
 };
+
 
