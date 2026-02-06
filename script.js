@@ -1,5 +1,6 @@
-window.onload = () => {
-  /* ========= ELEMENTS ========= */
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ===== SELECT ELEMENTS ===== */
   const greeting = document.getElementById("greeting");
   const subtext = document.getElementById("subtext");
   const teddy = document.querySelector(".teddy");
@@ -8,77 +9,87 @@ window.onload = () => {
   const chocolate = document.querySelector(".chocolate");
   const finalMessage = document.querySelector(".final-message");
 
-  /* ========= SAFETY ========= */
+  /* ===== SAFETY CHECK ===== */
   if (!greeting || !subtext || !teddy || !button || !loader || !chocolate || !finalMessage) {
-    console.error("Missing required HTML elements");
+    console.error("❌ Required HTML elements missing");
     return;
   }
 
-  /* ========= GREETING (JS-BASED) ========= */
-  const name = "Chittu";
+  /* ===== INITIAL STATE ===== */
+  loader.style.display = "none";
+  chocolate.style.display = "none";
+  finalMessage.style.display = "none";
+
+  /* ===== GREETING + DYNAMIC SUBTEXT ===== */
   const hour = new Date().getHours();
 
-  greeting.innerText = Hey ${name} 😊;
+  greeting.innerText = "Hey Chittu 😊";
 
-  if (hour < 12) {
-    subtext.innerText = "Hope this makes your morning sweeter 🍫";
-  } else if (hour < 18) {
-    subtext.innerText = "I have something sweet for you 🍫";
+  let text = "";
+  if (hour >= 5 && hour < 12) {
+    text = "Starting the day with something sweet 🍫";
+  } else if (hour >= 12 && hour < 18) {
+    text = "A little sweetness for your day 🍫";
   } else {
-    subtext.innerText = "Ending the day with something sweet 🍫";
+    text = "Ending the day with something sweet 🍫";
   }
 
-  /* ========= INITIAL STATES ========= */
-  teddy.style.display = "block";
-  teddy.style.opacity = "1";
-setTimeout(() => {
-  teddy.classList.add("show");
-}, 800);
+  setTimeout(() => {
+    subtext.innerText = text;
+    subtext.classList.add("show");
+  }, 600);
 
-  
+  /* ===== TEDDY ENTRY ===== */
+  setTimeout(() => {
+    teddy.classList.add("show");
+  }, 900);
 
-  button.style.display = "inline-block";
-  button.style.opacity = "1";
-
-  loader.style.display = "none";
-  chocolate.classList.remove("show");
-  finalMessage.classList.remove("show");
-
-  /* ========= BUTTON CLICK ========= */
+  /* ===== BUTTON CLICK FLOW ===== */
   button.addEventListener("click", () => {
-    // Hide button
+    button.disabled = true;
     button.style.display = "none";
 
-    // Show loader
+    // SHOW LOADER
     loader.style.display = "block";
+    loader.classList.add("show");
 
-    // Loader duration
+    // LOADER DURATION
     setTimeout(() => {
-      loader.style.display = "none";
+      loader.classList.remove("show");
 
-      // Show chocolate + final message
-      chocolate.classList.add("show");
-      finalMessage.classList.add("show");
+      setTimeout(() => {
+        loader.style.display = "none";
 
-      /* ========= NIGHT MESSAGE (JS-CREATED) ========= */
-      const currentHour = new Date().getHours();
+        // SHOW CHOCOLATE
+        chocolate.style.display = "block";
+        chocolate.classList.add("show");
 
-      if (currentHour >= 23 || currentHour < 2) {
+        // SHOW FINAL MESSAGE
         setTimeout(() => {
-          const nightMsg = document.createElement("p");
-          nightMsg.className = "night-message";
-          nightMsg.innerHTML = "Hui jaa etiya 😴<br>Kaille school ase";
+          finalMessage.style.display = "block";
+          finalMessage.classList.add("show");
 
-          finalMessage.insertAdjacentElement("afterend", nightMsg);
+          // ===== NIGHT MESSAGE (11PM–2AM) =====
+          const h = new Date().getHours();
+          if (h >= 23 || h < 2) {
+            setTimeout(() => {
+              const nightMsg = document.createElement("p");
+              nightMsg.className = "night-message";
+              nightMsg.innerHTML = "Hui jaa etiya 😴<br>Kaille school ase";
 
-          // Fade in
-          setTimeout(() => {
-            nightMsg.classList.add("show");
-          }, 50);
+              finalMessage.insertAdjacentElement("afterend", nightMsg);
 
-        }, 1500); // ⏳ after chocolate
-      }
+              requestAnimationFrame(() => {
+                nightMsg.classList.add("show");
+              });
+            }, 1500);
+          }
 
-    }, 2500); // loader time
+        }, 1200);
+
+      }, 400);
+
+    }, 2200);
   });
-};
+
+});
