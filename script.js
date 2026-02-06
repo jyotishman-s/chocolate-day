@@ -31,6 +31,11 @@ window.onload = () => {
   /* ========= INITIAL STATES ========= */
   teddy.style.display = "block";
   teddy.style.opacity = "1";
+setTimeout(() => {
+  teddy.classList.add("show");
+}, 800);
+
+  
 
   button.style.display = "inline-block";
   button.style.opacity = "1";
@@ -77,3 +82,4 @@ window.onload = () => {
     }, 2500); // loader time
   });
 };
+
