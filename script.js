@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   loader.style.display = "none";
   chocolate.style.display = "none";
   finalMessage.style.display = "none";
+  button.style.display = "inline-block";
+button.style.opacity = "1";
+
 
   /* ===== GREETING + DYNAMIC SUBTEXT ===== */
   const hour = new Date().getHours();
@@ -93,3 +96,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
