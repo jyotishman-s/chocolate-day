@@ -18,7 +18,7 @@ window.onload = () => {
   const name = "Chittu";
   const hour = new Date().getHours();
 
-  greeting.innerText = `Hey ${name} 😊`;
+  greeting.innerText = Hey ${name} 😊;
 
   if (hour < 12) {
     subtext.innerText = "Hope this makes your morning sweeter 🍫";
@@ -46,50 +46,15 @@ setTimeout(() => {
 
   /* ========= BUTTON CLICK ========= */
   button.addEventListener("click", () => {
-  button.disabled = true;
-  button.style.display = "none";
+    // Hide button
+    button.style.display = "none";
 
-  // SHOW loader
-  loader.style.display = "block";
-  loader.classList.add("show");
+    // Show loader
+    loader.style.display = "block";
 
-  // Wait → then show chocolate
-  setTimeout(() => {
-    loader.classList.remove("show");
-
+    // Loader duration
     setTimeout(() => {
       loader.style.display = "none";
-
-      chocolate.style.display = "block";
-      chocolate.classList.add("show");
-
-      setTimeout(() => {
-        finalMessage.style.display = "block";
-        finalMessage.classList.add("show");
-
-        // 🌙 Night message (if late)
-        const h = new Date().getHours();
-        if (h >= 23 || h < 2) {
-          setTimeout(() => {
-            const nightMsg = document.createElement("p");
-            nightMsg.className = "night-message";
-            nightMsg.innerHTML = "Hui jaa etiya 😴<br>Kaille school ase";
-
-            finalMessage.insertAdjacentElement("afterend", nightMsg);
-
-            requestAnimationFrame(() => {
-              nightMsg.classList.add("show");
-            });
-          }, 1500);
-        }
-
-      }, 300);
-
-    }, 400);
-
-  }, 2200); // ⏳ loader visible for ~2.2s
-});
-
 
       // Show chocolate + final message
       chocolate.classList.add("show");
@@ -117,5 +82,3 @@ setTimeout(() => {
     }, 2500); // loader time
   });
 };
-
-
