@@ -45,7 +45,7 @@ button.style.opacity = "1";
   /* ===== TEDDY ENTRY ===== */
   setTimeout(() => {
     teddy.classList.add("show");
-  }, 400);
+  }, 700);
 
   /* ===== BUTTON CLICK FLOW ===== */
   button.addEventListener("click", () => {
@@ -96,5 +96,6 @@ button.style.opacity = "1";
   });
 
 });
+
 
 
