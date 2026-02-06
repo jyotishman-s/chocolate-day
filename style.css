@@ -40,20 +40,22 @@ p {
   color: #6b3b36;
   margin-bottom: 15px;
 }
-/* Teddy Animation */
+/* Teddy Animation (FIXED) */
 .teddy {
   width: 180px;
   display: block;
-  margin: 0 auto 10px;
-  transform: translateY(-300px) rotate(-360deg);
+  margin: 20px auto;
+
   opacity: 0;
-  transition: transform 1.8s ease, opacity 1.8s ease;
+  transform: translateY(-60px) rotate(-20deg);
+  transition: transform 1s ease, opacity 1s ease;
 }
 
 .teddy.show {
-  transform: translateY(0) rotate(0deg);
   opacity: 1;
+  transform: translateY(0) rotate(0deg);
 }
+
 
 
 /* When teddy becomes visible */
@@ -184,6 +186,7 @@ p {
 
 
 }
+
 
 
 
