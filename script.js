@@ -30,7 +30,7 @@ button.style.opacity = "1";
 
   let text = "";
   if (hour >= 5 && hour < 12) {
-    text = "Starting the day with something sweet 🍫";
+    text = "Starting the morning with something sweet 🍫";
   } else if (hour >= 12 && hour < 18) {
     text = "A little sweetness for your day 🍫";
   } else {
@@ -96,6 +96,7 @@ button.style.opacity = "1";
   });
 
 });
+
 
 
 
