@@ -87,6 +87,41 @@ button.style.opacity = "1";
               });
             }, 1500);
           }
+          // After final message appears
+setTimeout(() => {
+
+  const extraLink = document.createElement("a");
+  extraLink.href = "valentine week.html";
+  extraLink.innerText = "there’s a little extra 🙂";
+
+  // Styling (soft pill button)
+  extraLink.style.display = "inline-block";
+  extraLink.style.marginTop = "28px";
+  extraLink.style.padding = "8px 18px";
+  extraLink.style.fontSize = "14px";
+  extraLink.style.borderRadius = "20px";
+  extraLink.style.textDecoration = "none";
+  extraLink.style.background = "#fff0f4";
+  extraLink.style.color = "#cc6f83";
+  extraLink.style.border = "1px solid #f5c5cf";
+  extraLink.style.transition = "all 0.25s ease";
+  extraLink.style.opacity = "0.9";
+
+  // Hover effect
+  extraLink.onmouseover = () => {
+    extraLink.style.background = "#ffe4ea";
+    extraLink.style.transform = "translateY(-2px)";
+  };
+
+  extraLink.onmouseout = () => {
+    extraLink.style.background = "#fff0f4";
+    extraLink.style.transform = "translateY(0)";
+  };
+
+  finalMessage.insertAdjacentElement("afterend", extraLink);
+
+}, 1200);
+
 
         }, 1200);
 
@@ -96,6 +131,7 @@ button.style.opacity = "1";
   });
 
 });
+
 
 
 
